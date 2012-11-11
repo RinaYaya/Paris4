@@ -53,10 +53,40 @@ P4 NouveauP()
 //----------------------------------------------------------------------
 P4 AjouterPion (P4 p, int iCol,Bool b)
 {
-	Pile pTmp=ChoixPile(p,iCol);
 	
-	pTmp=Empiler(p->p1,b);
-	p->Tour=Empiler2(p->Tour,iCol);
+	switch (iCol)
+	{
+		case 1: p->p1=Empiler(p->p1,b);
+				p->Tour=Empiler2(p->Tour,iCol);
+				break;
+
+		case 2: p->p2=Empiler(p->p2,b);
+				p->Tour=Empiler2(p->Tour,iCol);
+				break;
+
+		case 3: p->p3=Empiler(p->p3,b);
+		p->Tour=Empiler2(p->Tour,iCol);
+				break;
+
+		case 4: p->p4=Empiler(p->p4,b);
+		p->Tour=Empiler2(p->Tour,iCol);
+				break;
+
+		case 5: p->p5=Empiler(p->p5,b);
+		p->Tour=Empiler2(p->Tour,iCol);
+				break;
+
+		case 6: p->p6=Empiler(p->p6,b);
+		p->Tour=Empiler2(p->Tour,iCol);
+				break;
+
+		case 7: p->p7=Empiler(p->p7,b);
+				p->Tour=Empiler2(p->Tour,iCol);
+				break;
+
+		default: printf(" \n ChoixPile >>>>> NUMERO ICOL INCORRECTE <<<<< \n");
+			     break;
+	}
 
 	return p;
 }
