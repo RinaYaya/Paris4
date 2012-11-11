@@ -42,7 +42,7 @@ Pile Remplacer(Pile pPile, Bool b)
 //-------------------------------Sommet---------------------------------
 Bool Sommet(Pile pPile)
 {
-	if(pPile.tete ==0)
+	if(pPile.tete !=0)
 	{
 		return pPile.v[pPile.tete-1];
 	}
