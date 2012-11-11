@@ -5,8 +5,14 @@
 int main()
 {
 P4 p;
+PileB d=Nouv();
 p=NouveauP();
-
+d=Empiler(d,1);
+d=Empiler(d,1);
+d=Empiler(d,0);
+d=Empiler(d,1);
+d=Empiler(d,1);
+printf("\n Align Vert %d \n",ieme(d,3));
 p=AjouterPion(p,1,1);
 p=AjouterPion(p,2,1);
 p=AjouterPion(p,3,1);
