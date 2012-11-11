@@ -171,7 +171,7 @@ int AlignVert(P4 p, int iCol)
 	int iCpt=0, iNbPion=1;
 	Bool b=1;
 	
-	iCpt=iCol-1;
+	iCpt=pTmp.tete;
 	
 	while((iCpt>=0)&&(b==1))
 	{
