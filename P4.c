@@ -129,7 +129,7 @@ int AlignHoriz(P4 p, int iCol)
 	{
 		pTmp=ChoixPile(p,iCpt);
 		printf("\n hauteur av boucle : %d \n",Hauteur(pTmp));
-		printf("\n hauteur av boucle : %d \n",Sommet(pTmp));
+		printf("\n Sommet : %d \n",Sommet(pTmp));
 		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==1))
 		{
 			iNbPion++;
