@@ -145,7 +145,7 @@ int AlignHoriz(P4 p, int iCol)
 	
 	iCpt=iCol-1;
 	
-	while((iCpt>=0)&&(b==1))
+	while((iCpt>0)&&(b==1))
 	{
 		pTmp=ChoixPile(p,iCpt);
 		printf("\n hauteur av boucle : %d \n",Hauteur(pTmp));
