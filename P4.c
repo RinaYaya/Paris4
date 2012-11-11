@@ -121,16 +121,14 @@ int NbEtape (P4 p)
 //----------------------------------------------------------------------
 int AlignHoriz(P4 p, int iCol)
 {
-	int iCpt=iCol+1, iNbPion=1,iHauteur=0;
+	int iCpt=iCol+1, iNbPion=1,iHauteur=Hauteur(ChoixPile(p,iCol));
 	Bool b=1;
 	Pile pTmp=ChoixPile(p,iCpt);
-	
-	iHauteur=Hauteur(pTmp);
 	printf("\n hauteur av boucle : %d \n",iHauteur);
 	while((iCpt<=7)&&(b==1))
 	{
 		pTmp=ChoixPile(p,iCpt);
-	
+		printf("\n hauteur av boucle : %d \n",Hauteur(pTmp));
 		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==vrai))
 		{
 			iNbPion++;
