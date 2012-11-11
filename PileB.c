@@ -66,7 +66,7 @@ Bool vide (Pile pPile)
 Bool ieme(Pile p,int i)
 {
 	
-	if((i<7)&&(i!=0))
+	if((i<7)&&(i>0))
 	{
 		i=p.tete-i;
 		while(i!=0)
