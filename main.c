@@ -4,7 +4,6 @@
 
 int main()
 {
-int i;
 P4 p;
 p=NouveauP();
 
@@ -17,6 +16,6 @@ p=AjouterPion(p,7,1);
 
 printf("\n derniere col joué : %d \n",Colonne(p));
 printf("\n nbre etape : %d \n",NbEtape(p));
-printf("\n Align Horiz %d",AlignHoriz(p,4));
+printf("\n Align Horiz %d \n",AlignHoriz(p,5));
 	return 0;
 }
