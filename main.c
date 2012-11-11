@@ -15,6 +15,6 @@ p=AjouterPion(p,6,1);
 p=AjouterPion(p,7,1);
 
 
-printf("\n Align Horiz %d \n",AlignHoriz(p,5));
+printf("\n Align Horiz %d \n",AlignHoriz(p,4));
 	return 0;
 }
