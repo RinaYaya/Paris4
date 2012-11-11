@@ -14,8 +14,7 @@ p=AjouterPion(p,5,1);
 p=AjouterPion(p,6,1);
 p=AjouterPion(p,7,1);
 
-printf("\n derniere col joué : %d \n",Colonne(p));
-printf("\n nbre etape : %d \n",NbEtape(p));
+
 printf("\n Align Horiz %d \n",AlignHoriz(p,5));
 	return 0;
 }
