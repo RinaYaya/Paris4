@@ -5,7 +5,7 @@
 int main()
 {
 P4 p;
-PileB d=Nouv();
+Pile d=Nouv();
 p=NouveauP();
 d=Empiler(d,1);
 d=Empiler(d,1);
