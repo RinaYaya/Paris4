@@ -41,7 +41,7 @@ int Sommet2(PileD p)
 	int itmp=-1;
 	if(p->h ==0 )
 	{
-		printf(" Archtung: Pile vide !!!\n");
+		printf(" Archtung: Pile Dyn vide !!!\n");
 	}
 	else
 	{

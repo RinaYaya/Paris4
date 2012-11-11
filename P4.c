@@ -38,7 +38,7 @@ P4 NouveauP()
 {
 	P4 p=MALLOC(StrP4);
 	
-	p->Tour=MALLOC(StrPileD);
+	p->Tour=Nouv2(50);
 	p->p1=Nouv();
 	p->p2=Nouv();
 	p->p3=Nouv();
