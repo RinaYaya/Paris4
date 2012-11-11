@@ -7,13 +7,13 @@ int main()
 int i;
 P4 p;
 p=NouveauP();
+p=AjouterPion(p,1,1);
+p=AjouterPion(p,2,1);
+p=AjouterPion(p,3,1);
+p=AjouterPion(p,4,1);
+p=AjouterPion(p,5,1);
+p=AjouterPion(p,6,1);
+p=AjouterPion(p,7,1);
 
-AffichageGrille(p);
-printf(" \n pion gros un pion dans la col \n");
-scanf("%d",&i);
-printf(" \n choix  %d \n",i);
-p=AjouterPion(p,i,1);
-p=AjouterPion(p,i,0);
-AffichageGrille(p);
 	return 0;
 }
