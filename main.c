@@ -12,6 +12,7 @@ p=AjouterPion(p,2,1);
 p=AjouterPion(p,3,1);
 p=AjouterPion(p,5,1);
 p=AjouterPion(p,6,1);
+p=AjouterPion(p,6,1);
 p=AjouterPion(p,7,1);
 
 
