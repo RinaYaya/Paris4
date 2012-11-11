@@ -19,7 +19,7 @@ PileD Empiler2(PileD p, int b)
 	}
 	else 
 	{
-		printf("pile pleine \n");
+		printf("pile Dyn pleine \n");
 	}
 	return p;
 }
