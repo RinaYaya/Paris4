@@ -68,7 +68,7 @@ Bool ieme(Pile p,int i)
 	
 	if((i<7)&&(i!=0))
 	{
-		i=6-i;
+		i=p.tete-i;
 		while(i!=0)
 		{
 			p=Depiler(p);
