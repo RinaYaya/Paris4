@@ -124,7 +124,7 @@ int AlignHoriz(P4 p, int iCol)
 	int iCpt=iCol+1, iNbPion=1,iHauteur=1+Hauteur(ChoixPile(p,iCol));
 	Bool b=1;
 	Pile pTmp=ChoixPile(p,iCpt);
-	printf("\n hauteur av boucle : %d \n",iHauteur);
+
 	while((iCpt<=7)&&(b==1))
 	{
 		pTmp=ChoixPile(p,iCpt);
@@ -148,7 +148,8 @@ int AlignHoriz(P4 p, int iCol)
 	while((iCpt>=0)&&(b==1))
 	{
 		pTmp=ChoixPile(p,iCpt);
-	
+		printf("\n hauteur av boucle : %d \n",Hauteur(pTmp));
+		printf("\n Sommet : %d \n",Sommet(pTmp));
 		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==1))
 		{
 			iNbPion++;
