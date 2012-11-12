@@ -21,7 +21,7 @@ p=AjouterPion(p,5,1);
 p=AjouterPion(p,6,1);
 p=AjouterPion(p,6,1);
 p=AjouterPion(p,7,1);
-printf("\n Align droit %d \n",AlignDiagDroite(p,5));
+printf("\n Align droit %d \n",AlignDiagGauche(p,5));
 
 
 	return 0;

@@ -191,14 +191,16 @@ int AlignDiagGauche(P4 p, int iCol)
 	int iLig=0, iNbPion=1;
 	Pile pTmp= ChoixPile(p,iCol);
 	Bool b=1;
-	
 	iLig=Hauteur(pTmp);
+	iCol++;
 	
-	while((b==1)&&(iCol<8)&&(iLig>=0))
+	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((iLig==Hauteur(pTmp))&&(Sommet(pTmp)==1))
+					printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
+		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
 		{
+
 			iNbPion++;
 		}
 		else
@@ -216,14 +218,16 @@ int AlignDiagDroite(P4 p, int iCol)
 	int iLig=0, iNbPion=1;
 	Pile pTmp= ChoixPile(p,iCol);
 	Bool b=1;
-	
 	iLig=Hauteur(pTmp);
+	iCol++;
 	
-	while((b==1)&&(iCol<8)&&(iLig>=0))
+	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((iLig==Hauteur(pTmp))&&(Sommet(pTmp)==1))
+					printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
+		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
 		{
+
 			iNbPion++;
 		}
 		else
