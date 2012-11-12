@@ -168,11 +168,8 @@ int AlignHoriz(P4 p, int iCol)
 int AlignVert(P4 p, int iCol)
 {
 	Pile pTmp=ChoixPile(p,iCol);
-	int iCpt=0, iNbPion=0;
+	int iNbPion=0;
 	Bool b=1;
-	
-	iCpt=pTmp.tete;
-	
 	
 	while((vide(pTmp)!=1)&&(b==1))
 	{
@@ -191,18 +188,16 @@ int AlignVert(P4 p, int iCol)
 //----------------------------------------------------------------------
 int AlignDiagGauche(P4 p, int iCol)
 {
-	int iCpt=0, iNbPion=1;
+	int iLig=0, iNbPion=1;
 	Pile pTmp= ChoixPile(p,iCol);
 	Bool b=1;
 	
-	iCpt=Hauteur(pTmp);
-	iCpt++;
-	iCol--;
+	iLig=Hauteur(pTmp);
 	
-	while((b==1)&&(iCol<=6)&&(iCpt>=0))
+	while((b==1)&&(iCol<8)&&(iLig>=0))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if(ieme(pTmp,iCpt)==vrai)
+		if((iLig==Hauteur(pTmp))&&(Sommet(pTmp)==1))
 		{
 			iNbPion++;
 		}
@@ -210,26 +205,24 @@ int AlignDiagGauche(P4 p, int iCol)
 		{
 			b=0;
 		}
-		iCpt++;
-		iCol--;
+		iLig--;
+		iCol++;
 	}
 	return iNbPion;
 }
 //----------------------------------------------------------------------
 int AlignDiagDroite(P4 p, int iCol)
 {
-	int iCpt=0, iNbPion=1;
+	int iLig=0, iNbPion=1;
 	Pile pTmp= ChoixPile(p,iCol);
 	Bool b=1;
 	
-	iCpt=Hauteur(pTmp);
-	iCpt--;
-	iCol++;
+	iLig=Hauteur(pTmp);
 	
-	while((b==1)&&(iCol<=6)&&(iCpt>=0))
+	while((b==1)&&(iCol<8)&&(iLig>=0))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if(ieme(pTmp,iCpt)==vrai)
+		if((iLig==Hauteur(pTmp))&&(Sommet(pTmp)==1))
 		{
 			iNbPion++;
 		}
@@ -237,7 +230,7 @@ int AlignDiagDroite(P4 p, int iCol)
 		{
 			b=0;
 		}
-		iCpt--;
+		iLig--;
 		iCol++;
 	}
 	return iNbPion;
