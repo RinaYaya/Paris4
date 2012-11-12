@@ -29,7 +29,7 @@ Pile Depiler(Pile pPile)
 	}
 	else
 	{
-		printf("Pile Vide \n");
+		printf("Depiler >>>>>Pile Vide<<<<<<<<< \n");
 	}
 	return pPile;
 }
@@ -69,7 +69,7 @@ Bool ieme(Pile p,int i)
 	if((i<6)&&(i>=0))
 	{
 		i=p.tete-i;
-		while(i!=0)
+		while((i!=0)&&(i<6)&&(i>=0))
 		{
 			p=Depiler(p);
 			i--;

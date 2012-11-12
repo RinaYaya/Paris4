@@ -188,7 +188,54 @@ int AlignVert(P4 p, int iCol)
 //----------------------------------------------------------------------
 int AlignDiagGauche(P4 p, int iCol)
 {
-	int iLig=0, iNbPion=1;
+	int iLig=0, iNbPion=1,iTmp=iCol;
+	Pile pTmp= ChoixPile(p,iCol);
+	Bool b=1;
+	iLig=Hauteur(pTmp)+2;
+	iCol++;
+	
+	while((b==1)&&(iCol<8))
+	{
+		pTmp= ChoixPile(p,iCol);
+		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
+		{
+			iNbPion++;
+		}
+		else
+		{
+			b=0;
+		}
+		iLig++;
+		iCol++;
+	}
+	b=1;
+	iCol=iTmp-1;
+	pTmp=ChoixPile(p,iTmp);
+	iLig=Hauteur(pTmp);
+	
+	printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
+	while((b==1)&&(iCol>0))
+	{
+		pTmp= ChoixPile(p,iCol);
+		printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
+		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
+		{
+
+			iNbPion++;
+		}
+		else
+		{
+			b=0;
+		}
+		iLig--;
+		iCol--;
+	}
+	return iNbPion;
+}
+//----------------------------------------------------------------------
+int AlignDiagDroite(P4 p, int iCol)
+{
+	int iLig=0, iNbPion=1,iTmp=iCol;
 	Pile pTmp= ChoixPile(p,iCol);
 	Bool b=1;
 	iLig=Hauteur(pTmp);
@@ -197,10 +244,8 @@ int AlignDiagGauche(P4 p, int iCol)
 	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-					printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
 		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
 		{
-
 			iNbPion++;
 		}
 		else
@@ -210,21 +255,16 @@ int AlignDiagGauche(P4 p, int iCol)
 		iLig--;
 		iCol++;
 	}
-	return iNbPion;
-}
-//----------------------------------------------------------------------
-int AlignDiagDroite(P4 p, int iCol)
-{
-	int iLig=0, iNbPion=1;
-	Pile pTmp= ChoixPile(p,iCol);
-	Bool b=1;
-	iLig=Hauteur(pTmp);
-	iCol++;
+	b=1;
+	iCol=iTmp-1;
+	pTmp=ChoixPile(p,iTmp);
+	iLig=Hauteur(pTmp)+2;
 	
-	while((b==1)&&(iCol<8))
+	printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
+	while((b==1)&&(iCol>0))
 	{
 		pTmp= ChoixPile(p,iCol);
-					printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
+		printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
 		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
 		{
 
@@ -234,8 +274,8 @@ int AlignDiagDroite(P4 p, int iCol)
 		{
 			b=0;
 		}
-		iLig--;
-		iCol++;
+		iLig++;
+		iCol--;
 	}
 	return iNbPion;
 }
