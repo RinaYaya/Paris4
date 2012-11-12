@@ -168,14 +168,28 @@ int AlignHoriz(P4 p, int iCol)
 int AlignVert(P4 p, int iCol)
 {
 	Pile pTmp=ChoixPile(p,iCol);
-	int iCpt=0, iNbPion=1;
+	int iCpt=0, iNbPion=0;
 	Bool b=1;
 	
 	iCpt=pTmp.tete;
 	
-	while((iCpt>=0)&&(b==1))
+	//~ while((iCpt>=0)&&(b==1))
+	//~ {
+		//~ if(ieme(pTmp,iCpt)==vrai)
+		//~ {
+			//~ iNbPion++;
+		//~ }
+		//~ else
+		//~ {
+			//~ b=0;
+		//~ }
+		
+		//~ iCpt--;
+	//~ }
+	
+	while((vide(pTmp)!=1)&&(b==1))
 	{
-		if(ieme(pTmp,iCpt)==vrai)
+		if(Sommet(pTmp)==1)
 		{
 			iNbPion++;
 		}
@@ -183,8 +197,7 @@ int AlignVert(P4 p, int iCol)
 		{
 			b=0;
 		}
-		
-		iCpt--;
+		pTmp=Depiler(pTmp);
 	}
 	return iNbPion;
 }
