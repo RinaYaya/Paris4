@@ -173,19 +173,6 @@ int AlignVert(P4 p, int iCol)
 	
 	iCpt=pTmp.tete;
 	
-	//~ while((iCpt>=0)&&(b==1))
-	//~ {
-		//~ if(ieme(pTmp,iCpt)==vrai)
-		//~ {
-			//~ iNbPion++;
-		//~ }
-		//~ else
-		//~ {
-			//~ b=0;
-		//~ }
-		
-		//~ iCpt--;
-	//~ }
 	
 	while((vide(pTmp)!=1)&&(b==1))
 	{

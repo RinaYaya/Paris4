@@ -23,5 +23,9 @@ p=AjouterPion(p,7,1);
 printf("\n Align Vert %d \n",AlignVert(p,4));
 printf("\n Align Vert %d \n",AlignVert(p,5));
 printf("\n Align Vert %d \n",AlignVert(p,6));
+
+printf("\n Align Vert %d \n",AlignVert(p,4));
+printf("\n Align Vert %d \n",AlignVert(p,5));
+printf("\n Align Vert %d \n",AlignVert(p,6));
 	return 0;
 }
