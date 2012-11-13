@@ -65,20 +65,12 @@ Bool vide (Pile pPile)
 //----------------------------------------------------------------------
 Bool ieme(Pile p,int i)
 {
-	
 	if((i<6)&&(i>=0))
 	{
-		i=p.tete-i;
-		while((i!=0)&&(i<6)&&(i>=0))
-		{
-			p=Depiler(p);
-			i--;
-		}
+		return p.v[i];
 	}
 	else
 	{
 		printf(" \n IEME >>>>> Indice faux boulz <<<<< \n");
 	}
-	
-	return Sommet(p);
 }

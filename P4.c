@@ -128,9 +128,7 @@ int AlignHoriz(P4 p, int iCol)
 	while((iCpt<=7)&&(b==1))
 	{
 		pTmp=ChoixPile(p,iCpt);
-		printf("\n hauteur av boucle : %d \n",Hauteur(pTmp));
-		printf("\n Sommet : %d \n",Sommet(pTmp));
-		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==1))
+		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==Aquiletour(p)))
 		{
 			iNbPion++;
 		}
@@ -148,9 +146,7 @@ int AlignHoriz(P4 p, int iCol)
 	while((iCpt>0)&&(b==1))
 	{
 		pTmp=ChoixPile(p,iCpt);
-		printf("\n hauteur av boucle : %d \n",Hauteur(pTmp));
-		printf("\n Sommet : %d \n",Sommet(pTmp));
-		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==1))
+		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==Aquiletour(p)))
 		{
 			iNbPion++;
 		}
@@ -168,21 +164,33 @@ int AlignHoriz(P4 p, int iCol)
 int AlignVert(P4 p, int iCol)
 {
 	Pile pTmp=ChoixPile(p,iCol);
-	int iNbPion=0;
+	int iNbPion=1,iCpt=pTmp.tete;
+
 	Bool b=1;
 	
-	while((vide(pTmp)!=1)&&(b==1))
+	while((iCpt!=0)&&(b==1))
 	{
-		if(Sommet(pTmp)==1)
+		printf("\n boucle :%d \n", iCpt);
+		if(pTmp.v[iCpt]==1)
 		{
 			iNbPion++;
 		}
-		else
-		{
-			b=0;
-		}
-		pTmp=Depiler(pTmp);
+		if(pTmp.v[iCpt]==0)
+				iCpt--;
 	}
+	
+	//~ while((vide(pTmp)!=1)&&(b==1))
+	//~ {
+		//~ if(Sommet(pTmp)==Aquiletour(p))
+		//~ {
+			//~ iNbPion++;
+		//~ }
+		//~ else
+		//~ {
+			//~ b=0;
+		//~ }
+		//~ pTmp=Depiler(pTmp);
+	//~ }
 	return iNbPion;
 }
 //----------------------------------------------------------------------
@@ -197,7 +205,7 @@ int AlignDiagGauche(P4 p, int iCol)
 	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
+		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
 		{
 			iNbPion++;
 		}
@@ -213,12 +221,11 @@ int AlignDiagGauche(P4 p, int iCol)
 	pTmp=ChoixPile(p,iTmp);
 	iLig=Hauteur(pTmp);
 	
-	printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
+
 	while((b==1)&&(iCol>0))
 	{
 		pTmp= ChoixPile(p,iCol);
-		printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
-		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
+		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
 		{
 
 			iNbPion++;
@@ -244,7 +251,7 @@ int AlignDiagDroite(P4 p, int iCol)
 	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
+		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
 		{
 			iNbPion++;
 		}
@@ -260,12 +267,11 @@ int AlignDiagDroite(P4 p, int iCol)
 	pTmp=ChoixPile(p,iTmp);
 	iLig=Hauteur(pTmp)+2;
 	
-	printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
 	while((b==1)&&(iCol>0))
 	{
 		pTmp= ChoixPile(p,iCol);
-		printf("\n L %d c %d H %d\n ",iLig,iCol, Hauteur(pTmp));
-		if((ieme(pTmp,iLig)==1)&&(iLig<=Hauteur(pTmp)))
+
+		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
 		{
 
 			iNbPion++;
@@ -283,25 +289,29 @@ int AlignDiagDroite(P4 p, int iCol)
 void AffichageGrille(P4 p)
 {
 	int iCpth=1,iCptv=1;
-
-	for(iCpth=1;iCpth<=6;iCpth++)
+	Pile pTmp;
+	for(iCpth=5;iCpth>=0;iCpth--)
 	{
+		printf("|");
 		for(iCptv=1;iCptv<=7;iCptv++)
 		{
-			if((ChoixPile(p,iCptv)).tete == 0)
+			pTmp=ChoixPile(p,iCptv);
+			
+			if((ieme(pTmp,iCpth) == 1)&&(iCpth<=(pTmp.tete)))
 			{
-				printf("|   |");
+				
+				printf("X |");
 
 			}
 			else
 			{
-				if(ieme(ChoixPile(p,iCptv),iCpth) == 0)
+				if((ieme(pTmp,iCpth) == 0)&&(iCpth<=(pTmp.tete)))
 				{
-					printf("| 0 |");
+					printf("0 |");
 				}
 				else
 				{
-					printf("| X |");
+					printf("  |");
 				}
 			}
 		}
