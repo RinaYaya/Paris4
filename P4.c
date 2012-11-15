@@ -65,19 +65,19 @@ P4 AjouterPion (P4 p, int iCol,Bool b)
 				break;
 
 		case 3: p->p3=Empiler(p->p3,b);
-		p->Tour=Empiler2(p->Tour,iCol);
+				p->Tour=Empiler2(p->Tour,iCol);
 				break;
 
 		case 4: p->p4=Empiler(p->p4,b);
-		p->Tour=Empiler2(p->Tour,iCol);
+				p->Tour=Empiler2(p->Tour,iCol);
 				break;
 
 		case 5: p->p5=Empiler(p->p5,b);
-		p->Tour=Empiler2(p->Tour,iCol);
+				p->Tour=Empiler2(p->Tour,iCol);
 				break;
 
 		case 6: p->p6=Empiler(p->p6,b);
-		p->Tour=Empiler2(p->Tour,iCol);
+				p->Tour=Empiler2(p->Tour,iCol);
 				break;
 
 		case 7: p->p7=Empiler(p->p7,b);
@@ -121,41 +121,49 @@ int NbEtape (P4 p)
 //----------------------------------------------------------------------
 int AlignHoriz(P4 p, int iCol)
 {
-	int iCpt=iCol+1, iNbPion=1,iHauteur=1+Hauteur(ChoixPile(p,iCol));
+	int iCptC=iCol+1, iNbPion=1,iCptL=0;
 	Bool b=1;
-	Pile pTmp=ChoixPile(p,iCpt);
-
-	while((iCpt<=7)&&(b==1))
-	{
-		pTmp=ChoixPile(p,iCpt);
-		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==Aquiletour(p)))
-		{
-			iNbPion++;
-		}
-		else
-		{
-			b=0;
-		}
-		
-		iCpt++;
+	Pile pTmp=ChoixPile(p,iCol);
+	iCptL=(Hauteur(pTmp))+1;
 	
+	if(iCptC<=7)
+	{
+		do
+		{
+			pTmp=ChoixPile(p,iCptC);
+			if((Hauteur(pTmp)>=iCptL)&&(pTmp.v[iCptL-1]==Aquiletour(p)))
+			{
+				iNbPion++;
+			}
+			if(/*(Hauteur(pTmp)<iCptL)||*/(pTmp.v[iCptL-1]!=Aquiletour(p)))
+			{
+				b=0;
+			}
+			iCptC++;
+		}
+		while((iCptC<=8)&&(b==1));
 	}
 	
-	iCpt=iCol-1;
+	b=1;
+	iCptC=iCol-1;
 	
-	while((iCpt>0)&&(b==1))
+	if(iCptC>0)
 	{
-		pTmp=ChoixPile(p,iCpt);
-		if((iHauteur==Hauteur(pTmp))&&(Sommet(pTmp)==Aquiletour(p)))
+		do
 		{
-			iNbPion++;
+			
+			pTmp=ChoixPile(p,iCptC);
+			if((Hauteur(pTmp)>=iCptL)&&(pTmp.v[iCptL-1]==Aquiletour(p)))
+			{
+				iNbPion++;
+			}
+			if(/*(Hauteur(pTmp)<=iCptL)||*/(pTmp.v[iCptL-1]!=Aquiletour(p)))
+			{
+				b=0;
+			}
+			iCptC--;
 		}
-		else
-		{
-			b=0;
-		}
-		
-		iCpt--;
+		while((iCptC>0)&&(b==1));
 	}
 	
 	return iNbPion;
@@ -164,33 +172,26 @@ int AlignHoriz(P4 p, int iCol)
 int AlignVert(P4 p, int iCol)
 {
 	Pile pTmp=ChoixPile(p,iCol);
-	int iNbPion=1,iCpt=pTmp.tete;
+	int iNbPion=1,iCpt=pTmp.tete-1;
 
 	Bool b=1;
 	
-	while((iCpt!=0)&&(b==1))
+	while((iCpt>=0)&&(b==1))
 	{
-		printf("\n boucle :%d \n", iCpt);
-		if(pTmp.v[iCpt]==1)
+		
+		if(pTmp.v[iCpt]==Aquiletour(p))
 		{
 			iNbPion++;
 		}
-		if(pTmp.v[iCpt]==0)
-				iCpt--;
+		if(pTmp.v[iCpt]==(!Aquiletour(p)))
+		{
+			b=0;
+		}
+		
+		iCpt--;
+		
 	}
 	
-	//~ while((vide(pTmp)!=1)&&(b==1))
-	//~ {
-		//~ if(Sommet(pTmp)==Aquiletour(p))
-		//~ {
-			//~ iNbPion++;
-		//~ }
-		//~ else
-		//~ {
-			//~ b=0;
-		//~ }
-		//~ pTmp=Depiler(pTmp);
-	//~ }
 	return iNbPion;
 }
 //----------------------------------------------------------------------
@@ -205,7 +206,7 @@ int AlignDiagGauche(P4 p, int iCol)
 	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
+		if((iLig<=Hauteur(pTmp))&&(ieme(pTmp,iLig)==Aquiletour(p)))
 		{
 			iNbPion++;
 		}
@@ -225,7 +226,7 @@ int AlignDiagGauche(P4 p, int iCol)
 	while((b==1)&&(iCol>0))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
+		if((iLig<=Hauteur(pTmp))&&(ieme(pTmp,iLig)==Aquiletour(p)))
 		{
 
 			iNbPion++;
@@ -297,7 +298,7 @@ void AffichageGrille(P4 p)
 		{
 			pTmp=ChoixPile(p,iCptv);
 			
-			if((ieme(pTmp,iCpth) == 1)&&(iCpth<=(pTmp.tete)))
+			if((iCpth<(pTmp.tete))&&(ieme(pTmp,iCpth) == 1))
 			{
 				
 				printf("X |");
@@ -305,7 +306,7 @@ void AffichageGrille(P4 p)
 			}
 			else
 			{
-				if((ieme(pTmp,iCpth) == 0)&&(iCpth<=(pTmp.tete)))
+				if((iCpth<(pTmp.tete))&&(ieme(pTmp,iCpth) == 0))
 				{
 					printf("0 |");
 				}
