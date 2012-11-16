@@ -200,13 +200,12 @@ int AlignDiagGauche(P4 p, int iCol)
 	int iLig=0, iNbPion=1,iTmp=iCol;
 	Pile pTmp= ChoixPile(p,iCol);
 	Bool b=1;
-	iLig=Hauteur(pTmp)+2;
+	iLig=Hauteur(pTmp)+1;
 	iCol++;
-	
 	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((iLig<=Hauteur(pTmp))&&(ieme(pTmp,iLig)==Aquiletour(p)))
+		if((iLig<Hauteur(pTmp))&&(pTmp.v[iLig]==Aquiletour(p)))
 		{
 			iNbPion++;
 		}
@@ -220,15 +219,15 @@ int AlignDiagGauche(P4 p, int iCol)
 	b=1;
 	iCol=iTmp-1;
 	pTmp=ChoixPile(p,iTmp);
-	iLig=Hauteur(pTmp);
-	
+	iLig=Hauteur(pTmp)-1;
+	printf("\n haut : %d iCol: %d iLig : %d   \n",Hauteur(pTmp),iCol,iLig);
 
 	while((b==1)&&(iCol>0))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((iLig<=Hauteur(pTmp))&&(ieme(pTmp,iLig)==Aquiletour(p)))
+		printf("\n haut : %d iCol: %d iLig : %d   \n",Hauteur(pTmp),iCol,iLig);
+		if((iLig<Hauteur(pTmp))&&(pTmp.v[iLig]==Aquiletour(p)))
 		{
-
 			iNbPion++;
 		}
 		else
@@ -238,6 +237,7 @@ int AlignDiagGauche(P4 p, int iCol)
 		iLig--;
 		iCol--;
 	}
+	printf(" \n inb %d \n ",iNbPion);
 	return iNbPion;
 }
 //----------------------------------------------------------------------
