@@ -88,7 +88,7 @@ int main()
 		{
 			printf("\n>>>>> Joueur 2 à vous <<<<<\n Entrer un numero de colonne pour inserer votre pion \n");
 			c=recuperCol();
-			if((AlignHoriz(p,c)>=4)||(AlignVert(p,c)>3)||(AlignDiagDroite(p,c)>=4)||(AlignDiagGauche(p,c)>=4))
+			if((AlignHoriz(p,c)>=4)||(AlignVert(p,c)>4)||(AlignDiagDroite(p,c)>=4)||(AlignDiagGauche(p,c)>=4))
 			{
 				printf("\n>>>>> $$$$$$ Jackpot Joueur 2 $$$$$$    <<<<< \n");
 				iQuit=1;
