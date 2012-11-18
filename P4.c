@@ -220,12 +220,11 @@ int AlignDiagGauche(P4 p, int iCol)
 	iCol=iTmp-1;
 	pTmp=ChoixPile(p,iTmp);
 	iLig=Hauteur(pTmp)-1;
-	printf("\n haut : %d iCol: %d iLig : %d   \n",Hauteur(pTmp),iCol,iLig);
+	
 
 	while((b==1)&&(iCol>0))
 	{
 		pTmp= ChoixPile(p,iCol);
-		printf("\n haut : %d iCol: %d iLig : %d   \n",Hauteur(pTmp),iCol,iLig);
 		if((iLig<Hauteur(pTmp))&&(iLig>=0)&&(pTmp.v[iLig]==Aquiletour(p)))
 		{
 			iNbPion++;
@@ -237,7 +236,6 @@ int AlignDiagGauche(P4 p, int iCol)
 		iLig--;
 		iCol--;
 	}
-	printf(" \n inb %d \n ",iNbPion);
 	return iNbPion;
 }
 //----------------------------------------------------------------------
@@ -246,17 +244,16 @@ int AlignDiagDroite(P4 p, int iCol)
 	int iLig=0, iNbPion=1,iTmp=iCol;
 	Pile pTmp= ChoixPile(p,iCol);
 	Bool b=1;
-	iLig=Hauteur(pTmp);
+	iLig=Hauteur(pTmp)-1;
 	iCol++;
-	
 	while((b==1)&&(iCol<8))
 	{
 		pTmp= ChoixPile(p,iCol);
-		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
+		if((iLig<Hauteur(pTmp))&&(iLig>=0)&&(pTmp.v[iLig]==Aquiletour(p)))
 		{
 			iNbPion++;
 		}
-		else
+		if(pTmp.v[iLig]!=Aquiletour(p))
 		{
 			b=0;
 		}
@@ -266,26 +263,23 @@ int AlignDiagDroite(P4 p, int iCol)
 	b=1;
 	iCol=iTmp-1;
 	pTmp=ChoixPile(p,iTmp);
-	iLig=Hauteur(pTmp)+2;
-	
+	iLig=Hauteur(pTmp)+1;
+
 	while((b==1)&&(iCol>0))
 	{
 		pTmp= ChoixPile(p,iCol);
-
-		if((ieme(pTmp,iLig)==Aquiletour(p))&&(iLig<=Hauteur(pTmp)))
+		if((iLig<Hauteur(pTmp))&&(iLig>=0)&&(pTmp.v[iLig]==Aquiletour(p)))
 		{
-
 			iNbPion++;
 		}
-		else
+		if(pTmp.v[iLig]!=Aquiletour(p))
 		{
 			b=0;
 		}
 		iLig++;
 		iCol--;
 	}
-	return iNbPion;
-}
+	return iNbPion;}
 //----------------------------------------------------------------------
 void AffichageGrille(P4 p)
 {
