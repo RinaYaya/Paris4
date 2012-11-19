@@ -2,6 +2,12 @@
 #include "P4.h"
 #include "PileDyn.h"
 //----------------------------------------------------------------------
+int IA()
+{
+	
+	return;
+}
+//----------------------------------------------------------------------
 int recuperCol()
 {
 	int iCol=0,iOK=0;
@@ -53,18 +59,6 @@ int main()
 	Bool iQuit=0;
 	int c;
 	
-
-	//~ printf("\nPuissance 4\n");
-//~ p=AjouterPion(p,1,1);
-//~ p=AjouterPion(p,1,1);
-//~ p=AjouterPion(p,2,1);
-//~ p=AjouterPion(p,3,1);
-
-//~ p=AjouterPion(p,5,1);
-//~ p=AjouterPion(p,6,1);
-//~ AffichageGrille(p);
-//~ printf("\n TETE %d \n",p->p1.tete);
-//~ printf("\n ALI %d \n", AlignHoriz(p,4));
 	while(iQuit==0)
 	{
 		AffichageGrille(p);
@@ -73,7 +67,6 @@ int main()
 		{
 			printf("\n>>>>> Joueur 1 à vous <<<<<\n Entrer un numero de colonne pour inserer votre pion \n");
 			c=recuperCol();
-			printf("\n<<<<<<<<  %d  >>>>>>>><\n", AlignDiagDroite(p,c));
 			if((AlignHoriz(p,c)>=4)||(AlignVert(p,c)>=4)||(AlignDiagDroite(p,c)>=4)||(AlignDiagGauche(p,c)>=4))
 			{
 				printf("\n>>>>>$$$$$$ Jackpot Joueur 1 $$$$$$    <<<<< \n");
