@@ -28,7 +28,7 @@ Pile ChoixPile(P4 p, int iNum)
 		case 7: pTmp=p->p7;
 				break;
 	
-		default: printf(" \n ChoixPile >>>>> NUMERO ICOL INCORRECTE <<<<< \n");
+		default: printf(" \n ChoixPile >>>>> %d  NUMERO ICOL INCORRECTE <<<<< \n",iNum);
 			     break;
 	}
 	return pTmp;
@@ -141,7 +141,7 @@ int AlignHoriz(P4 p, int iCol)
 			}
 			iCptC++;
 		}
-		while((iCptC<=8)&&(b==1));
+		while((iCptC<8)&&(b==1));
 	}
 	
 	b=1;
@@ -302,7 +302,7 @@ void AffichageGrille(P4 p)
 			{
 				if((iCpth<(pTmp.tete))&&(ieme(pTmp,iCpth) == 0))
 				{
-					printf("0 |");
+					printf("O |");
 				}
 				else
 				{
@@ -313,6 +313,7 @@ void AffichageGrille(P4 p)
 		printf("\n");
 	}
 }
+//----------------------------------------------------------------------
 
 
 

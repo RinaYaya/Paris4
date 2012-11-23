@@ -26,4 +26,6 @@ Nat Hauteur2 (PileD p);
 //test de vacuité
 Bool vide2(PileD p);
 
+
+
 #endif // PILEDYN_H_INCLUDED

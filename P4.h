@@ -19,4 +19,6 @@ int AlignDiagGauche(P4 p, int iCol);
 int AlignDiagDroite(P4 p, int iCol);
 Pile ChoixPile(P4 p, int iNum);
 void AffichageGrille(P4 p);
+P4 vider_grille(P4 p);
+
 #endif // P4_H_INCLUDED
