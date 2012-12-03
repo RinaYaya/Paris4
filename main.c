@@ -4,12 +4,6 @@
 #include "IA.h"
 #include <time.h>
 //----------------------------------------------------------------------
-//~ int IA()
-//~ {
-	//~ int 
-	
-	//~ return Max2();
-//~ }
 int randIA(){
     return rand()%(7-1) +1;
 }
@@ -21,7 +15,6 @@ int recuperCol()
 	
 	while(iOK==0)
 	{
-		//~ printf("\n >>>>>>>>>>>>>>>>>>>>>>>%d \n ",iCol);
 		scanf("%d",&c);
 		switch(c)
 		{
@@ -109,6 +102,7 @@ int main()
 						}
 				
 					}
+					p=vider_grille(p);
 					break;
 					
 			case 1: while(iQuit==0)
@@ -132,8 +126,8 @@ int main()
 						{
 							printf(" \n L'IA va jouer patienter. \n");
 							
-							printf("\n MaxJ : %d MaxC: %d C:%d J:%d\n ",MaxJouer(p),MaxContrer(p),Contrer(p),Jouer(p));
-							if((MaxJouer(p))>=4)
+							
+							if((AlignHoriz(p,Contrer(p))>=4)||(AlignVert(p,Contrer(p))>=4)||(AlignDiagDroite(p,Contrer(p))>=4)||(AlignDiagGauche(p,Contrer(p))>=4)||(AlignHoriz(p,Jouer(p))>=4)||(AlignVert(p,Jouer(p))>=4)||(AlignDiagDroite(p,Jouer(p))>=4)||(AlignDiagGauche(p,Jouer(p))>=4))
 							{
 								printf("\n>>>>>  $$$$$$ Jackpot IA $$$$$$    <<<<< \n");
 								iQuit=1;
@@ -173,17 +167,48 @@ int main()
 						}
 						
 					}
-						p->p1.tete=0;
-						p->p2.tete=0;
-						p->p3.tete=0;
-						p->p4.tete=0;
-						p->p5.tete=0;
-						p->p6.tete=0;
-						p->p7.tete=0;
+					p=vider_grille(p);
 
 					break;
 					
 			case 3: iFermer=1;
+					break;
+					
+			case 4: while(iQuit!=1)
+					{
+						AffichageGrille(p);
+						if(Aquiletour(p))
+						{
+								printf("\n>>>>> Joueur 1 à vous <<<<<\n Entrer un numero de colonne pour inserer votre pion \n");
+								c=recuperCol();
+								if((AlignHoriz(p,c)>=4)||(AlignVert(p,c)>=4)||(AlignDiagDroite(p,c)>=4)||(AlignDiagGauche(p,c)>=4))
+								{
+									printf("\n>>>>>$$$$$$ Jackpot Joueur 1 $$$$$$    <<<<< \n");
+									iQuit=1;
+								}
+								else
+								{
+									p=AjouterPion(p,c,1);
+								}
+						}
+						else
+						{
+								printf("\n>>>>> Joueur Ordi à vous <<<<<\n Entrer un numero de colonne pour inserer votre pion \n");
+								c=score(p);
+								printf("\n score : %d \n",c);
+								if((AlignHoriz(p,c)>=4)||(AlignVert(p,c)>=4)||(AlignDiagDroite(p,c)>=4)||(AlignDiagGauche(p,c)>=4))
+								{
+									printf("\n>>>>>$$$$$$ Jackpot Joueur Ordi $$$$$$    <<<<< \n");
+									iQuit=1;
+								}
+								else
+								{
+									p=AjouterPion(p,c,1);
+								}
+						}
+					}
+					
+					p=vider_grille(p);
 					break;
 					
 			default : printf(" \n MAUVAIS NOMBRE\n");
@@ -192,6 +217,8 @@ int main()
 		}
 	}
 	
-
+	free(p->Tour->v);
+	free(p->Tour);
+	free(p);
 	return 0;
 }

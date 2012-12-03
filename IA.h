@@ -22,3 +22,6 @@ int Max2(int* p);
 
 //renvoi  l'element  max
 int Max1(int* p);
+
+//renvoie la colonne a jouer pour l'ordi
+int score(P4 p);

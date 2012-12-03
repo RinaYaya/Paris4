@@ -179,7 +179,7 @@ int AlignVert(P4 p, int iCol)
 	while((iCpt>=0)&&(b==1))
 	{
 		
-		if(pTmp.v[iCpt]==Aquiletour(p))
+		if((iCpt<Hauteur(pTmp))&& (pTmp.v[iCpt]==Aquiletour(p)))
 		{
 			iNbPion++;
 		}
@@ -314,8 +314,19 @@ void AffichageGrille(P4 p)
 	}
 }
 //----------------------------------------------------------------------
-
-
+P4 vider_grille(P4 p)
+{
+	p->p1.tete=0;
+	p->p2.tete=0;
+	p->p3.tete=0;
+	p->p4.tete=0;
+	p->p5.tete=0;
+	p->p6.tete=0;
+	p->p7.tete=0;		
+	p->Tour->h=0;
+	
+	return p;
+}
 
 
 
